@@ -1,0 +1,18 @@
+<!-- res/layout/story_item_layout.xml -->
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/storyImage"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:src="@drawable/circular_placeholder_background"
+        android:background="@drawable/circular_placeholder_background"
+        android:scaleType="centerCrop" />
+
+    <!-- Other views or text can be added here for additional story content -->
+
+</RelativeLayout>
