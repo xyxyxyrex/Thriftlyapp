@@ -11,6 +11,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class HomeFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -47,18 +50,51 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_home, container, false);
 
-        // Find the RecyclerView in your fragment's layout using rootView
+        // Find the RecyclerViews in your fragment's layout using rootView
         RecyclerView storiesRecyclerView = rootView.findViewById(R.id.storiesRecyclerView);
+        RecyclerView postsRecyclerView = rootView.findViewById(R.id.postsRecyclerView);
 
-        // Create a layout manager (e.g., LinearLayoutManager for horizontal scrolling)
-        LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
-        storiesRecyclerView.setLayoutManager(layoutManager);
+        // Create layout managers
+        LinearLayoutManager storiesLayoutManager = new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false);
+        LinearLayoutManager postsLayoutManager = new LinearLayoutManager(requireContext());
 
-        // Create and set the custom adapter
-        StoryPlaceholderAdapter adapter = new StoryPlaceholderAdapter();
-        storiesRecyclerView.setAdapter(adapter);
+        // Set layout managers to RecyclerViews
+        storiesRecyclerView.setLayoutManager(storiesLayoutManager);
+        postsRecyclerView.setLayoutManager(postsLayoutManager);
+
+        // Create and set the story placeholder adapter
+        StoryPlaceholderAdapter storyAdapter = new StoryPlaceholderAdapter();
+        storiesRecyclerView.setAdapter(storyAdapter);
+
+        // Fetch your actual post data and create a list of posts
+        List<Post> postList = fetchPostData();
+
+        // Create and set the post adapter with dynamic data
+        PostAdapter postAdapter = new PostAdapter(postList);
+        postsRecyclerView.setAdapter(postAdapter);
+
+        // Inside onCreateView method in HomeFragment.java
+        postsRecyclerView.setAdapter(postAdapter);
+        postsRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         return rootView;
+
+
+    }
+    private List<Post> fetchPostData() {
+        List<Post> postData = new ArrayList<>();
+
+        // Add sample data (replace this with your actual data fetching logic)
+        postData.add(new Post("User1", "Description 1"));
+        postData.add(new Post("User2", "Description 2"));
+        postData.add(new Post("User2", "Description 2"));
+        postData.add(new Post("User2", "Description 2"));
+        postData.add(new Post("User2", "Description 2"));
+        postData.add(new Post("User2", "Description 2"));
+        postData.add(new Post("User2", "Description 2"));
+        // Add more posts as needed
+
+        return postData;
     }
 
     public class StoryPlaceholderAdapter extends RecyclerView.Adapter<StoryPlaceholderAdapter.ViewHolder> {
