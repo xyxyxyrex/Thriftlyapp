@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,7 +71,7 @@ public class HomeFragment extends Fragment {
         List<Post> postList = fetchPostData();
 
         // Create and set the post adapter with dynamic data
-        PostAdapter postAdapter = new PostAdapter(postList);
+        PostAdapter postAdapter = new PostAdapter(requireContext(), postList, postsRecyclerView);
         postsRecyclerView.setAdapter(postAdapter);
 
         // Inside onCreateView method in HomeFragment.java
@@ -85,13 +86,14 @@ public class HomeFragment extends Fragment {
         List<Post> postData = new ArrayList<>();
 
         // Add sample data (replace this with your actual data fetching logic)
-        postData.add(new Post("User1", "Description 1"));
-        postData.add(new Post("User2", "Description 2"));
-        postData.add(new Post("User2", "Description 2"));
-        postData.add(new Post("User2", "Description 2"));
-        postData.add(new Post("User2", "Description 2"));
-        postData.add(new Post("User2", "Description 2"));
-        postData.add(new Post("User2", "Description 2"));
+        postData.add(new Post("StreetStyler1", "Exploring urban fashion vibes. 🏙️ #StreetStyle", R.drawable.post1, R.drawable.pfp1, false));
+        postData.add(new Post("UrbanTrendsetter", "City life, street style. 💯 #UrbanFashion", R.drawable.post2, R.drawable.pfp2, false));
+        postData.add(new Post("StreetSwagger", "Dressing up the streets with style. 👟 #StreetSwagger", R.drawable.post3, R.drawable.pfp3, false));
+        postData.add(new Post("CityChicExplorer", "Bold fashion in the heart of the city. 🌆 #CityChic", R.drawable.post4, R.drawable.pfp4, false));
+        postData.add(new Post("FashionRebel", "Breaking the rules with street fashion. 🚀 #FashionRebel", R.drawable.post0, R.drawable.pfp1, false));
+        postData.add(new Post("StreetGlam", "Glamorous street looks that turn heads. ✨ #StreetGlam", R.drawable.post5, R.drawable.pfp2, false));
+        postData.add(new Post("CitySoulFashion", "Where city vibes meet soulful fashion. 🎵 #CitySoul", R.drawable.post6, R.drawable.pfp3, false));
+
         // Add more posts as needed
 
         return postData;

@@ -4,6 +4,14 @@
         <item>All</item>
         <item>Hats</item>
         <item>Shoes</item>
-        <item>Clothes</item>
+        <item>Accessories</item>
+        <item>Dress</item>
+        <item>Jackets</item>
+        <item>Jeans</item>
+        <item>Sportswear</item>
+        <item>Swimwear</item>
+        <item>Underwear</item>
+
+
     </string-array>
 </resources>

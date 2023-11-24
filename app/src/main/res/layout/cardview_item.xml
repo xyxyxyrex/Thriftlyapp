@@ -23,14 +23,20 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp">
 
-                <ImageView
-                    android:id="@+id/profileImageView"
+                <androidx.cardview.widget.CardView
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:src="@drawable/circular_placeholder_background"
-                    android:scaleType="centerCrop"
                     android:layout_marginEnd="8dp"
-                    android:background="@drawable/circular_placeholder_background" />
+                    app:cardCornerRadius="20dp"
+                    android:background="@drawable/round_background">
+
+                    <ImageView
+                        android:id="@+id/profileImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/ic_launcher_foreground" />
+                </androidx.cardview.widget.CardView>
 
                 <TextView
                     android:id="@+id/usernameTextView"
@@ -38,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:textStyle="bold"
-                    android:layout_toEndOf="@id/profileImageView"
+                    android:layout_marginLeft="50dp"
                     android:layout_centerVertical="true" />
 
             </RelativeLayout>
@@ -70,7 +76,7 @@
                     android:id="@+id/heartImageView"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_heart_outline"
+                    android:src="@drawable/heart_selector"
                     android:layout_marginEnd="8dp"
                     android:layout_centerVertical="true" />
 

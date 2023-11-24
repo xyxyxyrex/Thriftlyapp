@@ -6,9 +6,9 @@ public class StoreItem {
     private int productImage;
     private String category;
     private int quantity;
-    private int productId;  // Added productId field
+    private int productId;
 
-    // Constructor
+
 
     public StoreItem(String productName, String productPrice, int productImage, String category, int productId) {
         this.productImage = productImage;

@@ -87,6 +87,6 @@ public class CartFragment extends Fragment {
                 e.printStackTrace();
             }
         }
-        totalTextView.setText(getString(R.string.total_price, String.format("%.2f", totalPrice)));
+        totalTextView.setText(getString(R.string.total_price, String.format("₱%.2f", totalPrice)));
     }
 }

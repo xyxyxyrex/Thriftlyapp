@@ -1,5 +1,7 @@
 package com.example.thriftlyapp;
 
+import static android.util.Log.e;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.thriftlyapp.CartViewModel;
 
 import java.util.List;
 
@@ -40,7 +44,7 @@ public class CheckoutFragment extends Fragment {
                 .get(CartViewModel.class);
 
         // Set up RecyclerView
-        CheckoutAdapter checkoutAdapter = new CheckoutAdapter(cartViewModel.getCartItems());
+        CheckoutAdapter checkoutAdapter = new CheckoutAdapter(cartViewModel.getCartItems(), totalTextView);
         checkoutRecyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         checkoutRecyclerView.setAdapter(checkoutAdapter);
 
@@ -64,6 +68,6 @@ public class CheckoutFragment extends Fragment {
             }
         }
 
-        totalTextView.setText(getString(R.string.total_price, String.format("%.2f", totalPrice)));
+        totalTextView.setText(getString(R.string.total_price, String.format("₱%.2f", totalPrice)));
     }
 }

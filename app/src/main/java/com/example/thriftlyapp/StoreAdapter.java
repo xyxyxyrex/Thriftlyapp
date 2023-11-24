@@ -1,5 +1,6 @@
 package com.example.thriftlyapp;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +37,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         StoreItem storeItem = storeItemList.get(position);
 
         holder.productImageView.setImageResource(storeItem.getProductImage());
@@ -47,9 +48,7 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (onItemClickListener != null) {
-                    onItemClickListener.onItemClick(position);
-                }
+
             }
         });
 
@@ -57,8 +56,9 @@ public class StoreAdapter extends RecyclerView.Adapter<StoreAdapter.ViewHolder> 
         holder.addToCartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Handle the "Add to Cart" button click
-                // You can implement the logic to add the item to the cart here
+                if (onItemClickListener != null) {
+                    onItemClickListener.onItemClick(position);
+                }
             }
         });
     }

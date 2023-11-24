@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,7 +36,19 @@ public class LoginActivity extends AppCompatActivity {
         signIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                // Perform login
+                String loginUrl = "http://localhost/phpmyadmin/thriftlyMobile/login.php";
+                String loginData = "username=" + username.getText().toString() +
+                        "&password=" + password.getText().toString();
+                String response = HttpUtility.sendHttpRequest(loginUrl, loginData);
+
+                // Process the response
+                if (response != null && response.equals("Login successful")) {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                } else {
+                    // Handle login failure, for example, show an error message
+                    Toast.makeText(LoginActivity.this, "Login failed", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
